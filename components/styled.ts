@@ -14,13 +14,13 @@ border: 1px solid black;
 
 
 export const ListWrapper = styled.View`
-border: 1px solid black;
+overflow: hidden;
+max-height: 500px;
 `;
 
 export const ListItemWrapper = styled.View`
     margin-bottom: 10px;
     flex-direction: row;
-    width: 200px;
 `;
 
 export const AddButton = styled.TouchableOpacity`

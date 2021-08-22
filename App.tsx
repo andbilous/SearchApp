@@ -17,12 +17,11 @@ export default function App() {
   } else {
     return (
       <Provider store={store}>
-<SafeAreaProvider>
-        <Navigation colorScheme={colorScheme} />
-        <StatusBar />
-      </SafeAreaProvider>
+        <SafeAreaProvider>
+          <Navigation colorScheme={colorScheme} />
+          <StatusBar />
+        </SafeAreaProvider>
       </Provider>
-      
     );
   }
 }

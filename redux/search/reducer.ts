@@ -28,7 +28,7 @@ export const searchReducer = (state = initialState, {type,payload}) => {
       case actionTypes.ADD_SEARCH_ITEM:
         return {
           ...state,
-          items: [...state.items,payload]
+          items: [payload,...state.items]
         };
         case actionTypes.DELETE_SEARCH_ITEM:
           return {

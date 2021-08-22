@@ -12,3 +12,8 @@ export const TitleInput = styled.TextInput`
 border: 1px solid black;
 `;
 
+export const ButtonContainer = styled.TouchableOpacity``;
+
+
+export const ButtonTitle = styled.Text``;
+
