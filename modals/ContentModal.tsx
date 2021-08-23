@@ -1,103 +1,57 @@
-import React, { useState,useEffect } from "react";
-import { Alert, Modal, StyleSheet, Text, Pressable, View } from "react-native";
-import {TitleInput} from './styled';
+import React from 'react';
+import { Text, TouchableOpacity, View, Modal } from 'react-native';
+import {
+  ModalWrapper,
+  Block,
+  ModalHeader,
+  Title,
+  CenteredView,
+  CloseButton,
+  ModalHeaderTitleWrapper,
+} from './styled';
 
-
-
-export const ContentModal = ({isVisible,onClose,submitEditTitle}) =>{
-    // const [value,setValue] = useState(editableItem.title);
-    // console.log('value',value)
-
-    // useEffect(()=>{
-    //         setValue(editableItem.title)
-    // },[editableItem.title])
-
-
-    return (
-<View style={styles.centeredView}>
-      <Modal
-        animationType="fade"
-        transparent={true}
-        visible={isVisible}
-        onRequestClose={onClose}
-
-      >
-        <View style={styles.centeredView}>
-        
-          <View style={styles.modalView}>
-          <Pressable
-              style={[ styles.buttonClose]}
-             onPress={onClose}
-            >
-              <Text  style={styles.textStyle}>Close</Text>
-            </Pressable>
-            <View>
-            
-            </View>
-              {/* <TitleInput value={value} onChangeText={setValue}>
-
-              </TitleInput> */}
-         
-            {/* <Pressable
-              style={[styles.button, styles.buttonClose]}
-             
-            >
-              <Text  style={styles.textStyle}>Content</Text>
-            </Pressable> */}
-                 <Text  style={styles.textStyle}>Some TExt</Text>
-          </View>
-         
-        </View>
- 
-      </Modal>
-    </View>
-    )
-    
-}
-
-const styles = StyleSheet.create({
-    centeredView: {
-      flex: 1,
-      justifyContent: "center",
-      alignItems: "center",
-      marginTop: 22,
-    },
-    modalView: {
-      width: '95%',
-      height: '50%',
-      margin: 20,
-      backgroundColor: "white",
-      borderRadius: 20,
-      borderWidth: 1,
-      padding: 35,
-      alignItems: "center",
-      shadowColor: "#000",
-      shadowOffset: {
-        width: 0,
-        height: 2
-      },
-      shadowOpacity: 0.25,
-      shadowRadius: 4,
-      elevation: 5
-    },
-    button: {
-      borderRadius: 20,
-      padding: 10,
-      elevation: 2
-    },
-    buttonOpen: {
-      backgroundColor: "#F194FF",
-    },
-    buttonClose: {
-      backgroundColor: "#2196F3",
-    },
-    textStyle: {
-      color: "black",
-      fontWeight: "bold",
-      textAlign: "center"
-    },
-    modalText: {
-      marginBottom: 15,
-      textAlign: "center"
-    }
-  });
+export const ContentModal = ({ isVisible, onClose, submitEditTitle }) => {
+  // return (
+  //   <View style={{ flex: 1 }}>
+  //     <TouchableOpacity onPress={onClose}>
+  //       <Text>Show Modal</Text>
+  //     </TouchableOpacity>
+  //     <Modal isVisible={isVisible}>
+  //       <View style={{ flex: 1 }}>
+  //         <Text>Hello!</Text>
+  //         <TouchableOpacity onPress={onClose}>
+  //           <Text>Hide me!</Text>
+  //         </TouchableOpacity>
+  //       </View>
+  //     </Modal>
+  //   </View>
+  // );
+  return (
+    <Modal
+      animationType='fade'
+      transparent={true}
+      visible={isVisible}
+      onRequestClose={onClose}
+    >
+      <ModalWrapper>
+        <ModalHeader>
+          <Title>Content</Title>
+          <CloseButton onPress={onClose}>
+            <Title>X</Title>
+          </CloseButton>
+        </ModalHeader>
+        <Title>
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry. Lorem Ipsum has been the industry's standard dummy text ever
+          since the 1500s, when an unknown printer took a galley of type and
+          scrambled it to make a type specimen book. It has survived not only
+          five centuries, but also the leap into electronic typesetting,
+          remaining essentially unchanged. It was popularised in the 1960s with
+          the release of Letraset sheets containing Lorem Ipsum passages, and
+          more recently with desktop publishing software like Aldus PageMaker
+          including versions of Lorem Ipsum.
+        </Title>
+      </ModalWrapper>
+    </Modal>
+  );
+};

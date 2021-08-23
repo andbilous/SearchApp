@@ -1,13 +1,17 @@
 import styled from 'styled-components/native';
 
-
 export const Wrapper = styled.View`
-border: 1px solid black;
-height: 80%;
-margin-top: 200px;
+  flex: 1;
+  background-color: white;
+  align-items: center;
+  justify-content: center;
 `;
 
-
 export const SearchInput = styled.TextInput`
-border: 1px solid black;
+  border: 1px solid black;
+`;
+
+export const NameWrapper = styled.View`
+  justify-content: center;
+  align-items: center;
 `;

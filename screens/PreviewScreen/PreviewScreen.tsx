@@ -39,72 +39,65 @@
 //   );
 // }
 
-import React,{useEffect} from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Button, Image,Platform } from 'react-native';
+import React, { useEffect } from 'react';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Button,
+  Image,
+  Platform,
+} from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import * as DocumentPicker from 'expo-document-picker';
 import { useState } from 'react';
+import { NameWrapper, Wrapper } from './styled';
 
+export const PreviewScreen = () => {
+  const [image, setImage] = useState(null);
+  const [fileName, setFileName] = useState('');
 
-export const PreviewScreen = ()=> {
-    const [image,setImage] = useState(null);
-
-    useEffect(() => {
+  useEffect(() => {
     (async () => {
       if (Platform.OS !== 'web') {
-        const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+        const { status } =
+          await ImagePicker.requestMediaLibraryPermissionsAsync();
         if (status !== 'granted') {
           alert('Sorry, we need camera roll permissions to make this work!');
         }
       }
     })();
   }, []);
-    
- const _pickDocument = async () => {
-	    let result = await DocumentPicker.getDocumentAsync({});
-		  alert(result.uri);
-      console.log(result);
-	}
 
- const  _pickImage = async () => {
+  const _pickDocument = async () => {
+    let result = await DocumentPicker.getDocumentAsync({});
+    setFileName(result.name);
+  };
+
+  const _pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       allowsEditing: true,
       aspect: [4, 3],
     });
 
-    alert(result.uri);
-    console.log(result)
-
     if (!result.cancelled) {
-        setImage(result.uri)
+      setImage(result.uri);
     }
   };
 
-    return (
-      <View style={styles.container}>
-        <Button
-          title="Select Document"
-          onPress={_pickDocument}
-        />
-
-      <View style={{ 'marginTop': 20}}>
-        <Button
-          title="Select Image"
-          onPress={_pickImage}
-        />
-        {image &&
-          <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
+  return (
+    <Wrapper>
+      <Button title='Select Document' onPress={_pickDocument} />
+      <View style={{ marginTop: 20 }}>
+        <Button title='Select Image' onPress={_pickImage} />
+        {image && (
+          <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />
+        )}
       </View>
-      </View>
-    );
-
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+      <NameWrapper>
+        <Text>{fileName}</Text>
+      </NameWrapper>
+    </Wrapper>
+  );
+};
