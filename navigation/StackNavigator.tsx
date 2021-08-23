@@ -2,7 +2,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { Button, Text } from 'react-native';
+import { Button } from 'react-native';
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import { SearchScreen } from '../screens/SearchScreen';

@@ -4,11 +4,11 @@ export const ModalWrapper = styled.View`
   height: 300px;
   width: 70%;
   margin-top: 300px;
-  background-color: grey;
+  background-color: white;
   margin-left: auto;
   margin-right: auto;
-  border-radius: 20px;
-  padding: 5px;
+  border-radius: 10px;
+  padding: 10px;
 `;
 
 export const Block = styled.View`
@@ -21,12 +21,19 @@ export const ModalHeader = styled.View`
   flex-direction: row;
   justify-content: space-between;
   background-color: white;
-  border-radius: 20px;
 `;
 
 export const Title = styled.Text``;
 
-export const CenteredView = styled.View``;
+export const CenteredView = styled.View`
+  padding: 10px;
+  margin-bottom: 10px;
+  color: white;
+`;
+
+export const Content = styled.Text`
+  color: black;
+`;
 
 export const CloseButton = styled.TouchableOpacity`
   width: 20px;
@@ -40,4 +47,8 @@ export const ModalContainer = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
+`;
+
+export const HeaderTitle = styled.Text`
+  margin-left: 35%;
 `;

@@ -12,7 +12,7 @@ border: 1px solid black;
 `;
 
 
-export const ButtonTitle = styled.Text<{  color ?:string }>`
+export const ButtonTitle = styled.Text<{color?:string }>`
   color: ${({ color }) => color || 'black'};
 `;
 
@@ -63,4 +63,11 @@ border-radius : 10px;
 padding: 10px;
 margin-right: 10px;
 `;
+
+export const HorizontalLine = styled.View`
+height: 2px;
+width: 100%;
+backgroundColor: black;
+margin-top: 10px;
+`
 
