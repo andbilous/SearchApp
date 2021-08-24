@@ -4,21 +4,15 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Button } from 'react-native';
-import Colors from '../constants/Colors';
-import useColorScheme from '../hooks/useColorScheme';
 import { SearchScreen } from '../screens/SearchScreen';
 import { PreviewScreen } from '../screens/PreviewScreen';
 
 const Stack = createNativeStackNavigator();
 
 export default function StackNavigator() {
-  const colorScheme = useColorScheme();
   const navigation = useNavigation();
   return (
-    <Stack.Navigator
-      initialRouteName='Search'
-      tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}
-    >
+    <Stack.Navigator initialRouteName='Search'>
       <Stack.Screen
         name='Search'
         component={SearchScreen}
@@ -47,9 +41,7 @@ export default function StackNavigator() {
               color='#000'
             />
           ),
-          tabBarIcon: ({ color }) => (
-            <TabBarIcon name='ios-code' color={color} />
-          ),
+          tabBarIcon: () => <TabBarIcon name='ios-code' />,
         }}
       />
     </Stack.Navigator>

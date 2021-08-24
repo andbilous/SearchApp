@@ -10,4 +10,5 @@ export type BottomTabParamList = {
 
 export type Item = {
   title: string;
+  cacheId?: string;
 };

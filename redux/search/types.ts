@@ -7,4 +7,9 @@ const actionTypes = {
   EDIT_SEARCH_ITEM: 'EDIT_SEARCH_ITEM',
 };
 
+export interface Action {
+  type: string;
+  payload: any;
+}
+
 export default actionTypes;

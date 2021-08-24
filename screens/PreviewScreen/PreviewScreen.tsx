@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Text, Button, Image, Platform } from 'react-native';
+import { Text, Button, Image } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import * as DocumentPicker from 'expo-document-picker';
 import { useState } from 'react';
@@ -11,12 +11,10 @@ export const PreviewScreen: React.FC = () => {
 
   useEffect(() => {
     (async () => {
-      if (Platform.OS !== 'web') {
-        const { status } =
-          await ImagePicker.requestMediaLibraryPermissionsAsync();
-        if (status !== 'granted') {
-          alert('Sorry, we need camera roll permissions to make this work!');
-        }
+      const { status } =
+        await ImagePicker.requestMediaLibraryPermissionsAsync();
+      if (status !== 'granted') {
+        alert('Sorry, we need camera permissions to make this work!');
       }
     })();
   }, []);

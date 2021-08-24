@@ -21,7 +21,9 @@ import {
 import { openModal, closeModal } from '../../redux/navigation/actions';
 import { SearchScreenProps } from './types';
 import uuid from 'react-native-uuid';
+import { ActivityIndicator } from 'react-native';
 import { Item } from '../../types';
+import type { RootState } from '../../redux/store';
 
 export const SearchScreenContainer: React.FC<SearchScreenProps> = ({
   items,
@@ -32,12 +34,13 @@ export const SearchScreenContainer: React.FC<SearchScreenProps> = ({
   editSearchItemAction,
   openModal,
   closeModal,
+  isLoading,
 }) => {
   const [inputValue, setInputValue] = useState('');
   const [isEditModalVisible, setIsEditModalVisible] = useState(false);
   const [editableItem, setEditableItem] = useState({ title: '' });
 
-  const defaultSearchTerm = 'mama';
+  const defaultSearchTerm = 'Jack';
 
   useEffect(() => {
     getSearchResults(defaultSearchTerm);
@@ -62,7 +65,9 @@ export const SearchScreenContainer: React.FC<SearchScreenProps> = ({
     setEditableItem(item);
     setIsEditModalVisible(true);
   };
-
+  if (isLoading) {
+    return <ActivityIndicator />;
+  }
   return (
     <>
       <Wrapper>
@@ -117,7 +122,7 @@ export const SearchScreenContainer: React.FC<SearchScreenProps> = ({
 };
 
 export const SearchScreen = connect(
-  ({ searchReducer, navigationReducer }: any) => ({
+  ({ searchReducer, navigationReducer }: RootState) => ({
     isLoading: searchReducer.isLoading,
     items: searchReducer.items,
     isModalOpened: navigationReducer.isModalOpened,

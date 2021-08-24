@@ -1,4 +1,5 @@
-import actionTypes from './types';
+import actionTypes, { Action } from './types';
+import { Item } from '../../types';
 
 const initialState = {
   items: [],
@@ -6,7 +7,10 @@ const initialState = {
   error: '',
 };
 
-export const searchReducer = (state = initialState, { type, payload }) => {
+export const searchReducer = (
+  state = initialState,
+  { type, payload }: Action
+) => {
   switch (type) {
     case actionTypes.GET_SEARCH_RESULTS_REQUEST:
       return {
@@ -17,6 +21,7 @@ export const searchReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         items: payload,
+        isLoading: false,
       };
     case actionTypes.GET_SEARCH_RESULTS_FAILURE:
       return {
@@ -32,12 +37,14 @@ export const searchReducer = (state = initialState, { type, payload }) => {
     case actionTypes.DELETE_SEARCH_ITEM:
       return {
         ...state,
-        items: state.items.filter((item) => item.cacheId !== payload.cacheId),
+        items: state.items.filter(
+          (item: Item) => item.cacheId !== payload.cacheId
+        ),
       };
     case actionTypes.EDIT_SEARCH_ITEM:
       return {
         ...state,
-        items: state.items.map((item) => {
+        items: state.items.map((item: Item) => {
           if (item.cacheId === payload.cacheId) {
             return payload;
           }

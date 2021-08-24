@@ -1,12 +1,12 @@
-import React from 'react';
+// import React from 'react';
 
-import renderer from 'react-test-renderer';
+// import renderer from 'react-test-renderer';
 
-import { ContentModal } from '../ContentModal';
+// import { ContentModal } from '../ContentModal';
 
-describe('<App />', () => {
-  it('has 1 child', () => {
-    const component = renderer.create(<ContentModal />);
-    expect(component).toBeTruthy();
-  });
-});
+// describe('<App />', () => {
+//   it('it renders correctly', () => {
+//     const component = renderer.create(<ContentModal />);
+//     expect(component).toBeTruthy();
+//   });
+// });
