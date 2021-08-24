@@ -3,9 +3,10 @@ import { FlatList } from 'react-native';
 import { ListWrapper } from '../styled';
 import { ListItem } from './ListItem';
 
-export const ResultsList = ({
+import { ResultsListProps } from './types';
+
+export const ResultsList: React.FC<ResultsListProps> = ({
   items,
-  addSearchItem,
   deleteSearchItem,
   setEditSearchItem,
 }) => {

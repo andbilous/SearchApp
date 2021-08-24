@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   ButtonTitle,
   ButtonContainer,
@@ -19,10 +19,11 @@ import {
   editSearchItemAction,
 } from '../../redux/search/actions';
 import { openModal, closeModal } from '../../redux/navigation/actions';
-import { useState } from 'react';
+import { SearchScreenProps } from './types';
 import uuid from 'react-native-uuid';
+import { Item } from '../../types';
 
-export const SearchScreenContainer = ({
+export const SearchScreenContainer: React.FC<SearchScreenProps> = ({
   items,
   isModalOpened,
   getSearchResults,
@@ -34,18 +35,19 @@ export const SearchScreenContainer = ({
 }) => {
   const [inputValue, setInputValue] = useState('');
   const [isEditModalVisible, setIsEditModalVisible] = useState(false);
-  const [editableItem, setEditableItem] = useState({});
+  const [editableItem, setEditableItem] = useState({ title: '' });
+
+  const defaultSearchTerm = 'mama';
 
   useEffect(() => {
-    getSearchResults('mama');
+    getSearchResults(defaultSearchTerm);
   }, []);
 
   const handleSearch = () => {
     getSearchResults(inputValue);
   };
 
-  const handleSubmitEdit = (title) => {
-    console.log('title222', title);
+  const handleSubmitEdit = (title: string) => {
     editSearchItemAction({ ...editableItem, title });
   };
 
@@ -56,7 +58,7 @@ export const SearchScreenContainer = ({
     });
   };
 
-  const handleEditItem = (item) => {
+  const handleEditItem = (item: Item) => {
     setEditableItem(item);
     setIsEditModalVisible(true);
   };
@@ -66,7 +68,7 @@ export const SearchScreenContainer = ({
       <Wrapper>
         <ButtonWrapper>
           <ButtonContainer
-            backgroundColor='red'
+            color='red'
             height={60}
             width={200}
             onPress={openModal}
@@ -102,10 +104,9 @@ export const SearchScreenContainer = ({
       </Wrapper>
       <ButtonWrapper>
         <ButtonContainer
-          backgroundColor='blue'
+          color='blue'
           height={60}
           width={200}
-          onPress={openModal}
           onPress={handleAddItem}
         >
           <ButtonTitle color='#fff'>Add Item</ButtonTitle>
@@ -116,17 +117,18 @@ export const SearchScreenContainer = ({
 };
 
 export const SearchScreen = connect(
-  ({ searchReducer, navigationReducer }) => ({
+  ({ searchReducer, navigationReducer }: any) => ({
     isLoading: searchReducer.isLoading,
     items: searchReducer.items,
     isModalOpened: navigationReducer.isModalOpened,
   }),
   (dispatch) => ({
     getSearchResults: (query: string) => dispatch(getSearchResults(query)),
-    addSearchItemAction: (item: any) => dispatch(addSearchItemAction(item)),
+    addSearchItemAction: (item: Item) => dispatch(addSearchItemAction(item)),
     deleteSearchItemAction: (id: string) =>
       dispatch(deleteSearchItemAction(id)),
-    editSearchItemAction: (newItem) => dispatch(editSearchItemAction(newItem)),
+    editSearchItemAction: (newItem: Item) =>
+      dispatch(editSearchItemAction(newItem)),
     openModal: () => dispatch(openModal()),
     closeModal: () => dispatch(closeModal()),
   })

@@ -12,7 +12,12 @@ import {
 
 import { HorizontalLine } from '../styled';
 
-export const ContentModal = ({ isVisible, onClose, submitEditTitle }) => {
+import { ContentModalProps } from './types';
+
+export const ContentModal: React.FC<ContentModalProps> = ({
+  isVisible,
+  onClose,
+}) => {
   return (
     <Modal
       animationType='fade'
@@ -31,10 +36,10 @@ export const ContentModal = ({ isVisible, onClose, submitEditTitle }) => {
         <CenteredView>
           <Content>
             Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
+            industry. Lorem Ipsum has been the industry standard dummy text ever
+            since the 1500s, when an unknown printer took a galley of type and
+            scrambled it to make a type specimen book. It has survived not only
+            five centuries, but also the leap into electronic typesetting,
             remaining essentially unchanged.
           </Content>
         </CenteredView>

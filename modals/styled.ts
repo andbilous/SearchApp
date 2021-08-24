@@ -40,8 +40,6 @@ export const CloseButton = styled.TouchableOpacity`
   height: 20px;
 `;
 
-export const ModalHeaderTitleWrapper = styled.View``;
-
 export const ModalContainer = styled.View`
   padding: 25px;
   flex: 1;
@@ -52,3 +50,14 @@ export const ModalContainer = styled.View`
 export const HeaderTitle = styled.Text`
   margin-left: 35%;
 `;
+
+export const EditModalWrapper = styled.View`
+  align-items: center;
+  justify-content: center;
+  background-color: red;
+  padding: 20px;
+  border-radius: 10px;
+  width: 200px;
+`;
+
+export const EditInput = styled.TextInput``;

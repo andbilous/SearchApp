@@ -1,19 +1,14 @@
 import React from 'react';
 import { Text } from 'react-native';
-import {
-  ListItemWrapper,
-  AddButton,
-  DeleteButton,
-  EditButton,
-} from '../styled';
-import {
-  ButtonTitle,
-  ButtonWrapper,
-  ItemWrapper,
-  ButtonContainer,
-} from '../../styled';
+import { ListItemWrapper } from '../styled';
+import { ButtonTitle, ItemWrapper, ButtonContainer } from '../../styled';
+import { ListItemProps } from './types';
 
-export const ListItem = ({ item, setEditSearchItem, onDelete }) => {
+export const ListItem: React.FC<ListItemProps> = ({
+  item,
+  setEditSearchItem,
+  onDelete,
+}) => {
   const handleDelete = () => {
     onDelete(item);
   };
@@ -25,10 +20,10 @@ export const ListItem = ({ item, setEditSearchItem, onDelete }) => {
       <ItemWrapper>
         <Text numberOfLines={1}>{item.title}</Text>
       </ItemWrapper>
-      <ButtonContainer width={100} backgroundColor='green' onPress={handleEdit}>
+      <ButtonContainer width={100} color='green' onPress={handleEdit}>
         <ButtonTitle>Edit</ButtonTitle>
       </ButtonContainer>
-      <ButtonContainer width={100} backgroundColor='red' onPress={handleDelete}>
+      <ButtonContainer width={100} color='red' onPress={handleDelete}>
         <ButtonTitle>DELETE</ButtonTitle>
       </ButtonContainer>
     </ListItemWrapper>

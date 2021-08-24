@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import { Ionicons } from '@expo/vector-icons';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
@@ -7,7 +8,6 @@ import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import { SearchScreen } from '../screens/SearchScreen';
 import { PreviewScreen } from '../screens/PreviewScreen';
-import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
 
 const Stack = createNativeStackNavigator();
 

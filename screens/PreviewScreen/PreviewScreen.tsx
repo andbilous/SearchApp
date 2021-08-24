@@ -31,15 +31,16 @@ export const PreviewScreen: React.FC = () => {
     setFileName(result.name);
   };
 
-  console.log(image);
-
   return (
     <Wrapper>
       <Button title='Select Document' onPress={_pickDocument} />
       <NameWrapper>
         <Text>{fileName}</Text>
         {image && (
-          <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />
+          <Image
+            source={{ uri: image || '' }}
+            style={{ width: 200, height: 200 }}
+          />
         )}
       </NameWrapper>
     </Wrapper>
