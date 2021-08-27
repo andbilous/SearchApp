@@ -6,6 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import { Button } from 'react-native';
 import { SearchScreen } from '../screens/SearchScreen';
 import { PreviewScreen } from '../screens/PreviewScreen';
+import { PlayersScreen } from '../screens/PlayersScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,11 +27,36 @@ export default function StackNavigator() {
               color='#000'
             />
           ),
+          headerLeft: () => (
+            <Button
+              onPress={() => {
+                navigation.navigate('Players');
+              }}
+              title='Players'
+              color='#000'
+            />
+          ),
         }}
       />
       <Stack.Screen
         name='Preview'
         component={PreviewScreen}
+        options={{
+          headerLeft: () => (
+            <Button
+              onPress={() => {
+                navigation.goBack();
+              }}
+              title='Search'
+              color='#000'
+            />
+          ),
+          tabBarIcon: () => <TabBarIcon name='ios-code' />,
+        }}
+      />
+      <Stack.Screen
+        name='Players'
+        component={PlayersScreen}
         options={{
           headerLeft: () => (
             <Button

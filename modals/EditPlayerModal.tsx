@@ -7,13 +7,19 @@ import { EditModalProps } from './types';
 
 import { ButtonContainer } from '../styled';
 
-export const EditModal: React.FC<EditModalProps> = ({
+export const EditPlayerModal: React.FC<any> = ({
   isVisible,
   setIsVisible,
-  editableItem,
-  submitEditTitle,
+  editablePlayer,
+  submitEditPlayer,
 }) => {
-  const [value, setValue] = useState(editableItem.title);
+  const [player, setPlayer] = useState(editablePlayer);
+
+  const handleChange = (text, field) => {
+    // setPlayer(Object.assign(player, { [field]: text }));
+    setPlayer(text);
+  };
+
   return (
     <Modal
       animationType='slide'
@@ -25,10 +31,17 @@ export const EditModal: React.FC<EditModalProps> = ({
     >
       <ModalContainer>
         <EditModalWrapper>
-          <EditInput value={value} onChangeText={setValue} />
+          <Text>First Name</Text>
+          <EditInput
+            style={{ borderWidth: 1, padding: 10 }}
+            value={player}
+            onChangeText={(text) => {
+              handleChange(text, 'firstName');
+            }}
+          />
           <ButtonContainer
             onPress={() => {
-              submitEditTitle(value);
+              submitEditPlayer(editablePlayer);
               setIsVisible(!isVisible);
             }}
           >

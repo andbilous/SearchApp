@@ -3,6 +3,16 @@ import actionTypes from './types';
 import { Item } from '../../types';
 import { Dispatch } from 'redux';
 
+export const addPlayer = (item: Item) => ({
+  type: actionTypes.ADD_PLAYER,
+  payload: item,
+});
+
+export const editPlayer = (newItem: Item) => ({
+  type: actionTypes.EDIT_SEARCH_ITEM,
+  payload: newItem,
+});
+
 export const addSearchItemAction = (item: Item) => ({
   type: actionTypes.ADD_SEARCH_ITEM,
   payload: item,

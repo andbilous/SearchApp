@@ -18,6 +18,9 @@ export const ListWrapper = styled.View`
 export const ListItemWrapper = styled.View`
   margin-bottom: 10px;
   flex-direction: row;
+  border: 1px solid black;
+  border-radius: 20px;
+  margin-top: 10px;
 `;
 
 export const AddButton = styled.TouchableOpacity`
